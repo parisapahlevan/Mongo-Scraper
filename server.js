@@ -5,6 +5,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var router = express.Router();
+require("./config/routes")(router);
 app.use(express.static(__dirname + "/public"));
  
 
