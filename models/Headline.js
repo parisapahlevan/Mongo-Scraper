@@ -1,0 +1,30 @@
+
+
+
+var mongoose = require("mongoose");
+var schema = mongoose.Schema
+var headlinesschema = new schema({
+    title:{
+        type: String,
+        required: true
+    },
+    summery: {
+        type: string,
+        required: true
+    },
+    url:{
+        type: string,
+        required: true 
+    },
+    date:{
+        type: Date,
+        default: Date.now
+    },
+    saved:{
+        type:Boolean,
+        default: false
+    }
+})
+
+var headline = mongoose.model("Headline", headlinesschema)
+module.exports = headline;

@@ -6,13 +6,15 @@ var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var router = express.Router();
 require("./config/routes")(router);
-app.use(express.static(__dirname + "/public"));
+
+app.use(express.static("public"));
  
 
 
 app.engine("handlebars", expressHandlebars({
     defaultLayout: "main"
 }))
+app.set("view engine", "handlebars")
 app.use(bodyParser.urlencoded({
     extended: false
 }));
