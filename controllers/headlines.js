@@ -16,7 +16,25 @@ module.exports = {
             });
         });
     },
+
     delete: (query, cb) => {
         Headline.remove(query, cb);
+    },
+
+    get: (query, cb) => {
+        Headline.find(query)
+        .sort({
+            _id: -1
+        })
+        .exec((query, cb) => {
+            cb(doc);
+        });
+    },
+
+    update: (query, cb) => {
+        Headline.update({_id: query._id}, {
+            $set:query
+        }, {}, cb);
     }
+
 }
