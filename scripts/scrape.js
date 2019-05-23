@@ -2,21 +2,21 @@ var request = require("request");
 var cheerio = require("cheerio");
 
 var scrape = cb => {
-    request("http://www.cnn.com", (err, res, body) => {
+    request("http://www.nytimes.com", (err, res, body) => {
         var $ = cheerio.load(body);
         var articles = [];
 
-        $(".cd cd--card cd--article cd--idx-10 cd--extra-small cd--has-siblings cd--media__image").each(function(i, element){
-            var head = $(this).children(".cd_headline").text().trim();
-            var sum = $(this).children(".cd__headline-text").text().trim();
+        $(".theme-summary").each(function(i, element){
+            var head = $(this).children(".story-heading").text().trim();
+            var sum = $(this).children(".summary").text().trim();
 
             if(head && sum){
                 var headClean =  head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
                 var sumClean =  head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
 
                 var dataToAdd = {
-                    headline= headClean,
-                    summery= sumClean
+                    headline: headClean,
+                    summary: sumClean
                 };
 
                 articles.push(dataToAdd);

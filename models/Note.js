@@ -9,7 +9,7 @@ var noteschema = new schema({
        ref: "Headline"
    },
    note: {
-       type: string,
+       type: String,
        required: true
    },
     date:{

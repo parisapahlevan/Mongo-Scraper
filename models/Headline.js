@@ -9,11 +9,11 @@ var headlinesschema = new schema({
         required: true
     },
     summery: {
-        type: string,
+        type: String,
         required: true
     },
     url:{
-        type: string,
+        type: String,
         required: true 
     },
     date:{
