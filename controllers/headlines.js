@@ -17,24 +17,24 @@ module.exports = {
         });
     },
 
-    delete: (query, cb) => {
+    delete: function(query, cb){
         Headline.remove(query, cb);
     },
 
-    get: (query, cb) => {
+    get: function (query, cb){
         Headline.find(query)
         .sort({
             _id: -1
         })
-        .exec((query, cb) => {
+        .exec(function(err, doc) {
             cb(doc);
         });
     },
 
-    update: (query, cb) => {
+    update: function (query, cb) {
         Headline.update({_id: query._id}, {
-            $set:query
+            $set: query
         }, {}, cb);
-    }
 
+    }
 }
