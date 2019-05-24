@@ -1,41 +1,28 @@
 var request = require("request");
 var cheerio = require("cheerio");
+var _  = require('lodash');
+var makeDate = require("../scripts/date");
 
 var scrape = function (cb) {
     request("https://www.nytimes.com/", function (err, res, body) {
         var $ = cheerio.load(body);
         var articles = [];
-        // console.log("\n\n-------------------------------------------------- BODY IS: ")
-        // console.log(body)
-        // console.log("--------------------------------------------------\n\n")
-        //card__headlines
-        $("article").each(function(i, element){           
-            var head = $(element).find("span").text().trim();
-            var sum = $(element).find("li").text().trim();
-            var link = $(element).find("a").attr("href");
-            console.log("\n\n-------------------------------------------------- head: ", i)
-            console.log({
-                header: head,
-                summary: sum,
-                linkToArticle: link
-            })
-            console.log("--------------------------------------------------\n\n")
-            if(head && sum){
-                var headClean =  head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-                var sumClean =  head.replace(/(\r\n|\n|\r|\t|\s+)/gm, " ").trim();
-
-                var dataToAdd = {
-                    headline: headClean,
-                    summary: sumClean
-                };
-
-                articles.push(dataToAdd);
-                //console.log(articles)
+        $("article").each(function(i, element){ 
+            var header= $(element).find("span").text().trim() || null;
+            var summary= $(element).find("li").text().trim() || null;
+            var link= $(element).find("a").attr("href") || null;
+            var article = {
+                title: header,
+                summary: summary,
+                url: link
+            }
+            if(!_.isEmpty(header) && !_.isEmpty(summary) && !_.isEmpty(link)){
+                article.date = makeDate();
+                article.saved = false;
+                articles.push(article);
             }
         });
-
         cb(articles);
-        
     });
 };
 

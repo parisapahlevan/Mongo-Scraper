@@ -15,13 +15,13 @@
      });
      router.get("/api/fetch", function (req, res) {
          headlinesController.fetch(function (err, docs) {
-             if(!docs || docs.docs.insertedCount ===  0){
+             if(!docs || docs.insertedCount ===  0){
                  res.json({
                      message: "No New Articles today. Check back tomorrow!"
                  });
                 }
                 else {
-                    res,json({
+                    res.json({
                         message: `Added ${docs.insertedCount} new articles!`
                     });
                 }
