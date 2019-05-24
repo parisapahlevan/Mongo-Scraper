@@ -10,7 +10,7 @@
          $.get ("/api/headlines?saved=false")
          .then(function(data){
              if (data && data.length){
-                 renderArticles(data);
+                renderArticles(data);
              }
              else {
                  renderEmpty();
@@ -32,14 +32,14 @@
          $(["<div class='panel panel-default'>",
          "<div class='panel-heading'>",
          "<h3>",
-         article.headline,
+         article.title,
          "<a class='btn btn-success save'>",
          "Save Article",
          "</a>",
          "</h3>",
          "</div>",
          "<div class='panel-body'>",
-         article.summery,
+         article.summary,
          "</div>",
          "</div>"
          
