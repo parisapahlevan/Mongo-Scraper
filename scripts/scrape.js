@@ -14,7 +14,7 @@ var scrape = function (cb) {
             var article = {
                 title: header,
                 summary: summary,
-                url: link
+                url: "https://www.nytimes.com"+link
             }
             if(!_.isEmpty(header) && !_.isEmpty(summary) && !_.isEmpty(link)){
                 article.date = makeDate();

@@ -28,23 +28,14 @@
      }
 
      function createPanel(article){
-         var panel=
-         $(["<div class='panel panel-default'>",
-         "<div class='panel-heading'>",
-         "<h3>",
-         article.title,
-         "<a class='btn btn-success save'>",
-         "Save Article",
-         "</a>",
-         "</h3>",
-         "</div>",
-         "<div class='panel-body'>",
-         article.summary,
-         "</div>",
-         "</div>"
-         
-         ].join(""));
-
+        var panel = $(
+        `<div class='panel panel-default'>
+                <div class='panel-heading'>
+                    <h3><a href='${article.url}'>${article.title}</a></h3>
+                    <a class='btn btn-success save'>Save Article</a>
+                </div>
+                <div class='panel-body'>${article.summary}</div>
+        </div>`)
          panel.data("_id", article._id);
          return panel;
      }
