@@ -7,7 +7,7 @@
  
  
  module.exports = function (router) {
-     router.get("/", (reg, res) => {
+     router.get("/", function (reg, res) {
          res.render("home");
      });
      router.get("/saved", function (req, res) {
@@ -29,16 +29,18 @@
          });
      });
      router.get("/api/headlines", function (req, res) {
+         console.log("I AM AHERERE ")
          var query = {};
          if(req.query.saved){
              query = req.query;
          }
+         console.log(">>>>>>>>>>> QUERY : ", query)
          headlinesController.get(query, function (data) {
              res.json(data)
          });
      });
      router.delete("/api/headlines/:id", function (req, res){
-         var querry = {};
+         var query = {};
          query._id = req.params.id;
          headlinesController.delete(query, function (err, data) {
              res.json(data);
@@ -54,7 +56,7 @@
          if(req.params.headline_id){
              query._id = req.params.headline_id;
          }
-         notesController.get(query, function (err, data){
+         noteController.get(query, function (err, data){
              res.json(data);
          });
      });
