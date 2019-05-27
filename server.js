@@ -22,14 +22,15 @@ app.use(bodyParser.urlencoded({
 app.use(router);
 
 var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(db, function(error){
-    if (error){
-        console.log(error);
-    } 
-    else {
-        console.log("mongoose connection is successfull");
-    }
-})
+// mongoose.connect(db, function(error){
+//     if (error){
+//         console.log(error);
+//     } 
+//     else {
+//         console.log("mongoose connection is successfull");
+//     }
+// })
+mongoose.connect(MONGODB_URI);
 
 app.listen(PORT, function(){
     console.log("Listenig on port:" + PORT);
