@@ -51,13 +51,18 @@
              res.json(data)
          });
      });
-     router.get("/api/notes/:headline_id", function (req, res) {
+     router.get("/api/notes/:headline_id", (req, res) => {
          var query = {};
          if(req.params.headline_id){
              query._id = req.params.headline_id;
          }
-         noteController.get(query, function (err, data){
-             res.json(data);
+         noteController.get(query, (err, data)=>{
+             console.log(" _______ I AM HERE _________")
+             if(err){
+                 console.log("There is an error in noteController.get")
+             }else{
+                res.json(data ? data : '');
+             }
          });
      });
      router.delete("/api/notes/:id", function (req, res){

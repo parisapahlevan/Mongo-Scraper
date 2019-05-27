@@ -1,10 +1,17 @@
 var Note = require("../models/Note");
 var makeDate = require("../scripts/date");
+var ObjectId = require('mongodb').ObjectID;
+
 module.exports = {
   get: function (data, cb) {
+      var ID = new ObjectId(data._id)
+      console.log("ID : ", ID);
       Note.find({
-          _headlindId: data._id
-      }, cb);
+          _id: ID
+      }, (doc)=>{
+          console.log("FOUNT ONE DOC: ", doc)
+        return cb(doc);
+      });
   },
   save: function (data, cb) {
       var newNote = {

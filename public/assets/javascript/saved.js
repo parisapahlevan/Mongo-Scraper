@@ -97,7 +97,9 @@ $(document).ready(function(){
 
         function handleArticleNotes(){
             var currentArticle = $(this).parents(".panel").data();
-            $.get("/api/notes/" + currentArticle._id).then(function(data){
+            $.get("/api/notes/" + currentArticle._id).then((data)=>{
+                console.log(">>>>>> data: ", data )
+                console.log("currentArticle._id: ", currentArticle._id)
                 var modalText = [
                     "<div class='container-fluid text-center'>",
                     "<h4>Notes For Article: ",
