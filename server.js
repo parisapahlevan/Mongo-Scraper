@@ -32,7 +32,6 @@ mongoose.connect(db, function(error){
     }
 })
 
-
 app.listen(PORT, function(){
     console.log("Listenig on port:" + PORT);
 });
