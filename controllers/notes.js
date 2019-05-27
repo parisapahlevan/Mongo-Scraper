@@ -4,27 +4,19 @@ var ObjectId = require('mongodb').ObjectID;
 
 module.exports = {
   get: function (data, cb) {
-      var ID = new ObjectId(data._id)
-      console.log("ID : ", ID);
-      Note.find({
-          _id: ID
-      }, (doc)=>{
-          console.log("FOUNT ONE DOC: ", doc)
-        return cb(doc);
-      });
+      Note.find({_id: data._id}, cb);
   },
   save: function (data, cb) {
       var newNote = {
-          _headlineId: data._id,
+          _id: data._id,
           date: makeDate(),
-          noteText: data.noteText
+          note: data.noteText
       };
       Note.create(newNote, function (err, doc) {
           if(err){
               console.log(err);
           } 
           else {
-              console.log(doc);
               cb(doc)
           }
       });

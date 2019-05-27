@@ -73,7 +73,7 @@ $(document).ready(function(){
                 for (var i = 0; i < data.notes.length; i++){
                     currentNote = $([
                         "<li class='list-group-item note'>",
-                        data.notes[i].noteText,
+                        data.notes[i].note,
                         "<button class='btn btn-danger note-delete'>X</button>",
                         "</li>"
                     ].join(""));
@@ -98,8 +98,6 @@ $(document).ready(function(){
         function handleArticleNotes(){
             var currentArticle = $(this).parents(".panel").data();
             $.get("/api/notes/" + currentArticle._id).then((data)=>{
-                console.log(">>>>>> data: ", data )
-                console.log("currentArticle._id: ", currentArticle._id)
                 var modalText = [
                     "<div class='container-fluid text-center'>",
                     "<h4>Notes For Article: ",

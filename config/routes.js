@@ -29,12 +29,10 @@
          });
      });
      router.get("/api/headlines", function (req, res) {
-         console.log("I AM AHERERE ")
          var query = {};
          if(req.query.saved){
              query = req.query;
          }
-         console.log(">>>>>>>>>>> QUERY : ", query)
          headlinesController.get(query, function (data) {
              res.json(data)
          });
@@ -57,7 +55,6 @@
              query._id = req.params.headline_id;
          }
          noteController.get(query, (err, data)=>{
-             console.log(" _______ I AM HERE _________")
              if(err){
                  console.log("There is an error in noteController.get")
              }else{

@@ -72,6 +72,7 @@
              if (data.ok){
                  initPage
              }
+             location.reload();
          });
      }
      function handleArticleScrape(){
