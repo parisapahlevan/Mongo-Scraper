@@ -13,7 +13,7 @@ In this assignment, we'll create a web app that lets users view and leave commen
 * [Node.js](https://nodejs.org/en)
 * [MongoDB](https://www.mongodb.com)
 * [Mongoose](https://www.npmjs.com/package/mongoose)
-* [RESTful API](
 
 
-MongoDB, Mongoose, RESTful API, JQuery,
+
+
